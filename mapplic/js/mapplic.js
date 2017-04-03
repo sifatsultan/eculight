@@ -84,17 +84,20 @@
 				this.title = $('<h4></h4>').addClass('mapplic-tooltip-title').appendTo(this.content);
 				this.desc = $('<div></div>').addClass('mapplic-tooltip-description').appendTo(this.content);
 
+				var title = this.title;
+
 				if (this.tooltiplink) this.link = $('<a>' + mapplic_localization.more + '</a>').addClass('mapplic-popup-link').attr('href', '#').hide().appendTo(this.el);
 				this.triangle = $('<div></div>').addClass('mapplic-tooltip-triangle').prependTo(this.el);
+				console.log(this.title);
 
 				// Toggle switch
 				this.form = $('<form></form>').addClass('toggleForm').appendTo(this.el);
 				this.switch = $('<input id="toggleBox" type="checkbox" value="check1">').appendTo(this.form);
-				this.switch.on('click touchstart', function(e){
-					console.log('HI');
-					console.log('Hacking is about just discovering, keep discovering. Just keep discovering');
-					console.log(this.desc);
-					// this.desc.html("<p>Hacking is about just discovering, keep discovering. Just keep discovering</p>");
+
+				//event listener for showAlert
+				this.switch.change(title, function() {
+				  console.log("hello");
+					console.log(title);
 				});
 
 				// Append
@@ -102,8 +105,6 @@
 
 				return this;
 			}
-
-
 
 			this.show = function(location) {
 				if (location) {
